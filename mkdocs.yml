@@ -1,0 +1,10 @@
+site_name: Docs-Canguru
+site_url: https://docs-canguru.oulu.ifrn.edu.br
+site_description: Documentação Canguru
+site_author: Canguru
+
+nav:
+
+
+theme:
+    name: mkdocs
