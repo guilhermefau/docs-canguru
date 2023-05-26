@@ -4,26 +4,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Documentação Canguru">
+        
         <meta name="author" content="Canguru">
-        <link rel="canonical" href="https://docs-canguru.oulu.ifrn.edu.br/">
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Docs-Canguru</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        <link rel="canonical" href="https://docs-canguru.oulu.ifrn.edu.br/configurar_interfaces/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Configurar interfaces - Docs-Canguru</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Docs-Canguru</a>
+                <a class="navbar-brand" href="..">Docs-Canguru</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -33,11 +33,11 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
-                                <a href="." class="nav-link">Home</a>
-                            </li>
                             <li class="navitem">
-                                <a href="configurar_interfaces/" class="nav-link">Configurar interfaces</a>
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Configurar interfaces</a>
                             </li>
                         </ul>
 
@@ -48,12 +48,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="configurar_interfaces/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -74,24 +74,6 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#introducao" class="nav-link">Introdução</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#comandos-essenciais" class="nav-link">Comandos essenciais</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#para-listar-as-interfaces-de-rede" class="nav-link">Para listar as interfaces de rede:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#para-ativar-e-desativar-no-debian" class="nav-link">Para ativar e desativar (no Debian):</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
             
             <li class="nav-item" data-level="1"><a href="#configuracao-das-interfaces-de-rede-com-netplan-no-ubuntu-server" class="nav-link">Configuração das Interfaces de Rede com Netplan no Ubuntu Server</a>
               <ul class="nav flex-column">
@@ -138,69 +120,11 @@
             </li>
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#visualizacao-de-logs" class="nav-link">Visualização de Logs</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#para-visualizar-o-log-do-sistema" class="nav-link">Para visualizar o log do sistema:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#para-visualizar-o-log-de-autenticacao" class="nav-link">Para visualizar o log de autenticação:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#para-visualizar-o-log-de-acesso-do-apache" class="nav-link">Para visualizar o log de acesso do Apache:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#para-visualizar-o-log-de-erros-do-apache" class="nav-link">Para visualizar o log de erros do Apache:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#arquivos-de-configuracao-e-chaves-ssh" class="nav-link">Arquivos de Configuração e Chaves SSH</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#no-servidor-ssh" class="nav-link">No servidor SSH:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#no-cliente-ssh" class="nav-link">No cliente SSH:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#arquivos-de-chave-ssh" class="nav-link">Arquivos de chave SSH:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#id_rsa-e-id_rsapub" class="nav-link">id_rsa e id_rsa.pub:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#authorized_keys" class="nav-link">authorized_keys:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#known_hosts" class="nav-link">known_hosts:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="introducao"><strong>Introdução</strong></h1>
-<p>Esta é a documentação de um projeto realizado na disciplina de Administração de Sistemas Abertos do Curso de Redes de Computadores.</p>
-<h1 id="comandos-essenciais"><strong>Comandos essenciais</strong></h1>
-<h2 id="para-listar-as-interfaces-de-rede">Para listar as interfaces de rede:</h2>
-<p><strong>$ ip -br - c a</strong></p>
-<h2 id="para-ativar-e-desativar-no-debian">Para ativar e desativar (no Debian):</h2>
-<p><strong>$ ifup INTERFACE #ATIVAR</strong></p>
-<p><strong>$ ifdown INTERFACE #DESATIVAR</strong></p>
 <h1 id="configuracao-das-interfaces-de-rede-com-netplan-no-ubuntu-server"><strong>Configuração das Interfaces de Rede com Netplan no Ubuntu Server</strong></h1>
 <p>O Netplan é o utilitário de configuração de rede padrão no Ubuntu a partir da versão 17.10. Ele substitui o arquivo de configuração de rede legado "/etc/network/interfaces" e permite configurar a rede de forma mais eficiente e flexível. O Netplan utiliza a sintaxe YAML para definir a configuração de rede.</p>
 <h2 id="passo-1-criareditar-o-arquivo-de-configuracao">Passo 1: Criar/Editar o arquivo de configuração</h2>
@@ -276,33 +200,7 @@ Nesse exemplo, os servidores DNS do Google 8.8.8.8 e 8.8.4.4 são configurados p
 <p>Depois de fazer as alterações necessárias no arquivo /etc/network/interfaces, salve o arquivo e feche o editor de texto.</p>
 <h2 id="passo-4-reiniciar-o-servico-de-rede">Passo 4: Reiniciar o serviço de rede</h2>
 <p>Para que as alterações tenham efeito, você precisa reiniciar o serviço de rede. Use o seguinte comando para reiniciar o serviço networking:</p>
-<p><strong>$ systemctl restart networking</strong></p>
-<h1 id="visualizacao-de-logs"><strong>Visualização de Logs</strong></h1>
-<p>O comando <strong>journalctl -f | ccze</strong> é usado para exibir o log em tempo real do sistema, formatando-o com cores usando o programa ccze. Isso pode ajudar a tornar a leitura do log mais fácil e distinguir diferentes tipos de mensagens.</p>
-<p>Os seguintes comandos podem ser usados para visualizar logs específicos com formatação colorida:</p>
-<h2 id="para-visualizar-o-log-do-sistema">Para visualizar o log do sistema:</h2>
-<p><strong>$ tail -f /var/log/syslog | ccze</strong></p>
-<h2 id="para-visualizar-o-log-de-autenticacao">Para visualizar o log de autenticação:</h2>
-<p><strong>$ tail -f /var/log/auth.log | ccze</strong></p>
-<h2 id="para-visualizar-o-log-de-acesso-do-apache">Para visualizar o log de acesso do Apache:</h2>
-<p><strong>$ tail -f /var/log/apache2/access.log | ccze</strong></p>
-<h2 id="para-visualizar-o-log-de-erros-do-apache">Para visualizar o log de erros do Apache:</h2>
-<p><strong>$ tail -f /var/log/apache2/error.log | ccze</strong></p>
-<p>Esses comandos exibirão as últimas linhas do arquivo de log especificado em tempo real, e a saída será formatada com cores usando o ccze. Isso tornará mais fácil identificar diferentes tipos de mensagens no log.</p>
-<p>Lembre-se de que você precisa ter permissões de superusuário (ou usar sudo) para acessar os logs em alguns diretórios, como /var/log/auth.log e /var/log/apache2/.</p>
-<h1 id="arquivos-de-configuracao-e-chaves-ssh"><strong>Arquivos de Configuração e Chaves SSH</strong></h1>
-<h2 id="no-servidor-ssh"><strong>No servidor SSH:</strong></h2>
-<p>/etc/ssh/sshd_config: Este é o arquivo de configuração do servidor SSH. Ele contém várias opções de configuração, como portas, autenticação, permissões de acesso, entre outras. É necessário ter privilégios de superusuário para editar este arquivo.</p>
-<h2 id="no-cliente-ssh"><strong>No cliente SSH:</strong></h2>
-<p>~/.ssh/config: Este é o arquivo de configuração do cliente SSH, localizado no diretório home do usuário. Ele permite configurar opções específicas para conexões SSH, como aliases de host, identidades de chave, opções de autenticação, entre outras.</p>
-<h2 id="arquivos-de-chave-ssh"><strong>Arquivos de chave SSH:</strong></h2>
-<h2 id="id_rsa-e-id_rsapub"><strong>id_rsa e id_rsa.pub:</strong></h2>
-<p>Esses são os arquivos da chave privada e pública, respectivamente. A chave privada (id_rsa) é mantida no cliente e é usada para autenticar a conexão SSH. A chave pública (id_rsa.pub) é copiada para o servidor SSH e adicionada ao arquivo authorized_keys para permitir a autenticação com a chave correspondente.</p>
-<h2 id="authorized_keys"><strong>authorized_keys:</strong></h2>
-<p>Este arquivo está localizado no diretório ~/.ssh do usuário no servidor SSH. Ele contém as chaves públicas autorizadas para autenticação com o servidor. Cada chave pública autorizada é adicionada em uma nova linha neste arquivo.</p>
-<h2 id="known_hosts"><strong>known_hosts:</strong></h2>
-<p>Este arquivo é criado automaticamente pelo cliente SSH quando se conecta a um novo servidor SSH. Ele armazena as chaves públicas dos servidores aos quais você já se conectou, a fim de verificar a autenticidade desses servidores em conexões futuras.
-Esses arquivos e configurações são importantes para a configuração e autenticação segura de conexões SSH. Ao configurar o SSH, é essencial garantir que as permissões corretas sejam aplicadas aos arquivos de chave (por exemplo, id_rsa deve ter permissões restritas somente para o usuário) e que as configurações de segurança apropriadas sejam definidas nos arquivos de configuração (por exemplo, no sshd_config do servidor).</p></div>
+<p><strong>$ systemctl restart networking</strong></p></div>
             </div>
         </div>
 
@@ -311,11 +209,11 @@ Esses arquivos e configurações são importantes para a configuração e autent
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = ".",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -380,8 +278,3 @@ Esses arquivos e configurações são importantes para a configuração e autent
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.4.3
-Build Date UTC : 2023-05-26 00:58:45.232499+00:00
--->
