@@ -2,27 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs-canguru.oulu.ifrn.edu.br/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs-canguru.oulu.ifrn.edu.br/comandos/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs-canguru.oulu.ifrn.edu.br/configurar_interfaces/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs-canguru.oulu.ifrn.edu.br/servico_http/</loc>
+         <lastmod>2023-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs-canguru.oulu.ifrn.edu.br/ssh/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs-canguru.oulu.ifrn.edu.br/verlogs/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <loc>https://docs-canguru.oulu.ifrn.edu.br/ver_logs/</loc>
+         <lastmod>2023-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

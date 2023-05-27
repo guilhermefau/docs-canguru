@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,13 @@
         <meta name="author" content="Canguru">
         <link rel="canonical" href="https://docs-canguru.oulu.ifrn.edu.br/ssh/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Ssh - Docs-Canguru</title>
+        <title>SSH - Docs-Canguru</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link href="../assets/css/extra.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap.min.js" defer></script>
@@ -21,7 +23,7 @@
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="..">Docs-Canguru</a>
                 <!-- Expander button -->
@@ -37,35 +39,28 @@
                                 <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="../comandos/" class="nav-link">Comandos</a>
+                                <a href="../comandos/" class="nav-link">Comandos essenciais</a>
                             </li>
                             <li class="navitem">
-                                <a href="../configurar_interfaces/" class="nav-link">Configurar interfaces</a>
+                                <a href="../configurar_interfaces/" class="nav-link">Configurar Interfaces de Rede</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../servico_http/" class="nav-link">HTTP Server</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Ssh</a>
+                                <a href="./" class="nav-link">SSH</a>
                             </li>
                             <li class="navitem">
-                                <a href="../verlogs/" class="nav-link">Verlogs</a>
+                                <a href="../ver_logs/" class="nav-link">Ver logs</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> Buscar
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../configurar_interfaces/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../verlogs/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -75,7 +70,7 @@
             <div class="row">
                     <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Tabela de Conteúdos">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
@@ -83,6 +78,11 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#ssh" class="nav-link">SSH</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             
             <li class="nav-item" data-level="1"><a href="#arquivos-de-configuracao-e-chaves-ssh" class="nav-link">Arquivos de Configuração e Chaves SSH</a>
               <ul class="nav flex-column">
@@ -98,18 +98,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#id_rsa-e-id_rsapub" class="nav-link">id_rsa e id_rsa.pub:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#authorized_keys" class="nav-link">authorized_keys:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#known_hosts" class="nav-link">known_hosts:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -117,17 +105,18 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
+<h1 id="ssh">SSH</h1>
 <h1 id="arquivos-de-configuracao-e-chaves-ssh"><strong>Arquivos de Configuração e Chaves SSH</strong></h1>
 <h2 id="no-servidor-ssh"><strong>No servidor SSH:</strong></h2>
 <p>/etc/ssh/sshd_config: Este é o arquivo de configuração do servidor SSH. Ele contém várias opções de configuração, como portas, autenticação, permissões de acesso, entre outras. É necessário ter privilégios de superusuário para editar este arquivo.</p>
 <h2 id="no-cliente-ssh"><strong>No cliente SSH:</strong></h2>
 <p>~/.ssh/config: Este é o arquivo de configuração do cliente SSH, localizado no diretório home do usuário. Ele permite configurar opções específicas para conexões SSH, como aliases de host, identidades de chave, opções de autenticação, entre outras.</p>
 <h2 id="arquivos-de-chave-ssh"><strong>Arquivos de chave SSH:</strong></h2>
-<h2 id="id_rsa-e-id_rsapub"><strong>id_rsa e id_rsa.pub:</strong></h2>
+<h4 id="id_rsa-e-id_rsapub"><strong>id_rsa e id_rsa.pub:</strong></h4>
 <p>Esses são os arquivos da chave privada e pública, respectivamente. A chave privada (id_rsa) é mantida no cliente e é usada para autenticar a conexão SSH. A chave pública (id_rsa.pub) é copiada para o servidor SSH e adicionada ao arquivo authorized_keys para permitir a autenticação com a chave correspondente.</p>
-<h2 id="authorized_keys"><strong>authorized_keys:</strong></h2>
+<h4 id="authorized_keys"><strong>authorized_keys:</strong></h4>
 <p>Este arquivo está localizado no diretório ~/.ssh do usuário no servidor SSH. Ele contém as chaves públicas autorizadas para autenticação com o servidor. Cada chave pública autorizada é adicionada em uma nova linha neste arquivo.</p>
-<h2 id="known_hosts"><strong>known_hosts:</strong></h2>
+<h4 id="known_hosts"><strong>known_hosts:</strong></h4>
 <p>Este arquivo é criado automaticamente pelo cliente SSH quando se conecta a um novo servidor SSH. Ele armazena as chaves públicas dos servidores aos quais você já se conectou, a fim de verificar a autenticidade desses servidores em conexões futuras.
 Esses arquivos e configurações são importantes para a configuração e autenticação segura de conexões SSH. Ao configurar o SSH, é essencial garantir que as permissões corretas sejam aplicadas aos arquivos de chave (por exemplo, id_rsa deve ter permissões restritas somente para o usuário) e que as configurações de segurança apropriadas sejam definidas nos arquivos de configuração (por exemplo, no sshd_config do servidor).</p></div>
             </div>
@@ -135,7 +124,7 @@ Esses arquivos e configurações são importantes para a configuração e autent
 
         <footer class="col-md-12">
             <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+            <p>Documentação construída com <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
             var base_url = "..",
@@ -148,17 +137,17 @@ Esses arquivos e configurações são importantes para a configuração e autent
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="searchModalLabel">Buscar</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>A partir daqui você pode buscar pelo documento. Digite os termos de pesquisa abaixo.</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Buscando..." id="mkdocs-search-query" title="Digite o termo a ser buscado aqui">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results" data-no-results-text="Não foram encontrados resultados"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -168,33 +157,33 @@ Esses arquivos e configurações são importantes para a configuração e autent
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="keyboardModalLabel">Atalhos de teclado</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
             </div>
             <div class="modal-body">
               <table class="table">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
+                    <th style="width: 20%;">Teclas</th>
+                    <th>Ação</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>Abrir esta ajuda</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>Próxima página</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>Página anterior</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>Buscar</td>
                   </tr>
                 </tbody>
               </table>

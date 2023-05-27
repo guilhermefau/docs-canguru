@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,13 @@
         <meta name="author" content="Canguru">
         <link rel="canonical" href="https://docs-canguru.oulu.ifrn.edu.br/configurar_interfaces/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Configurar interfaces - Docs-Canguru</title>
+        <title>Configurar Interfaces de Rede - Docs-Canguru</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link href="../assets/css/extra.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap.min.js" defer></script>
@@ -21,7 +23,7 @@
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="..">Docs-Canguru</a>
                 <!-- Expander button -->
@@ -37,35 +39,28 @@
                                 <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="../comandos/" class="nav-link">Comandos</a>
+                                <a href="../comandos/" class="nav-link">Comandos essenciais</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Configurar interfaces</a>
+                                <a href="./" class="nav-link">Configurar Interfaces de Rede</a>
                             </li>
                             <li class="navitem">
-                                <a href="../ssh/" class="nav-link">Ssh</a>
+                                <a href="../servico_http/" class="nav-link">HTTP Server</a>
                             </li>
                             <li class="navitem">
-                                <a href="../verlogs/" class="nav-link">Verlogs</a>
+                                <a href="../ssh/" class="nav-link">SSH</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../ver_logs/" class="nav-link">Ver logs</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> Buscar
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../comandos/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../ssh/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -75,7 +70,7 @@
             <div class="row">
                     <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Tabela de Conteúdos">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
@@ -83,6 +78,11 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#configurar-interfaces-de-rede" class="nav-link">Configurar Interfaces de Rede</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             
             <li class="nav-item" data-level="1"><a href="#configuracao-das-interfaces-de-rede-com-netplan-no-ubuntu-server" class="nav-link">Configuração das Interfaces de Rede com Netplan no Ubuntu Server</a>
               <ul class="nav flex-column">
@@ -99,10 +99,6 @@
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#passo-4-teste-a-conexao-com-a-internet" class="nav-link">Passo 4: Teste a conexão com a Internet</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#passo-5-instalacao-dos-pacotes-necessarios" class="nav-link">Passo 5: Instalação dos Pacotes Necessários</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -134,20 +130,23 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
+<h1 id="configurar-interfaces-de-rede">Configurar Interfaces de Rede</h1>
 <h1 id="configuracao-das-interfaces-de-rede-com-netplan-no-ubuntu-server"><strong>Configuração das Interfaces de Rede com Netplan no Ubuntu Server</strong></h1>
 <p>O Netplan é o utilitário de configuração de rede padrão no Ubuntu a partir da versão 17.10. Ele substitui o arquivo de configuração de rede legado "/etc/network/interfaces" e permite configurar a rede de forma mais eficiente e flexível. O Netplan utiliza a sintaxe YAML para definir a configuração de rede.</p>
 <h2 id="passo-1-criareditar-o-arquivo-de-configuracao">Passo 1: Criar/Editar o arquivo de configuração</h2>
 <p>Acesse o arquivo de configuração YAML no diretório "/etc/netplan".</p>
-<p><strong>$vi /etc/netplan/50-cloud-init.yaml</strong></p>
+<pre><code>$ sudo vi /etc/netplan/50-cloud-init.yaml
+</code></pre>
 <p>Dentro do arquivo, você encontrará o seguinte conteúdo:</p>
-<p>network:
+<pre><code>network:
   version: 2
   ethernets:
     eth0:
-      dhcp4: true</p>
+      dhcp4: true
+</code></pre>
 <p>Pressione a tecla i para iniciar a edição do arquivo.</p>
 <p>Atualize o arquivo de configuração com as seguintes informações, verificando sempre a identação correta:</p>
-<p>network:
+<pre><code>network:
   version: 2
   renderer: networkd
   ethernets:
@@ -158,64 +157,64 @@
         addresses: [8.8.8.8, 8.8.4.4] # DNS
       routes:
         - to: default
-          via: 192.168.0.254 # Gateway</p>
+          via: 192.168.0.254 # Gateway
+</code></pre>
 <p>Aperte a tecla Esc e digite :wq! para salvar e sair do editor.</p>
 <h2 id="passo-2-aplique-as-novas-configuracoes-de-rede">Passo 2: Aplique as novas configurações de rede</h2>
 <p>Use o seguinte comando para aplicar as novas configurações de rede:</p>
-<p><strong>$ netplan apply</strong></p>
+<pre><code>$ sudo netplan apply
+</code></pre>
 <p>Se tudo estiver correto, o comando será executado sem retornar nada. Caso ocorra algum erro, o Netplan exibirá uma mensagem de erro indicando o problema.</p>
 <h2 id="passo-3-verifique-se-o-endereco-ip-foi-atribuido-corretamente-usando-o-comando">Passo 3: Verifique se o endereço IP foi atribuído corretamente usando o comando:</h2>
-<p><strong>$ ip -br -c a</strong></p>
+<pre><code>$ ip -br -c a
+</code></pre>
 <h2 id="passo-4-teste-a-conexao-com-a-internet">Passo 4: Teste a conexão com a Internet</h2>
 <p>Teste a conexão com a Internet usando o comando ping, por exemplo:</p>
-<p><strong>$ ping google.com</strong></p>
+<pre><code>$ ping google.com
+</code></pre>
 <p>Certifique-se de que a conexão com a Internet esteja funcionando corretamente.</p>
-<h2 id="passo-5-instalacao-dos-pacotes-necessarios">Passo 5: Instalação dos Pacotes Necessários</h2>
-<p>Para prosseguir com a instalação dos pacotes necessários, siga as etapas abaixo:</p>
-<p>Atualize os repositórios do sistema:</p>
-<p><strong>$ sudo apt update</strong></p>
-<p>Atualize os pacotes instalados para as versões mais recentes, se necessário:</p>
-<p><strong>$ sudo apt upgrade</strong></p>
-<p>Instale os pacotes necessários, incluindo sudo, nano, micro, apache2, syslog-ng, mariadb-server e php:</p>
-<p><strong>$ sudo apt install sudo nano micro apache2 syslog-ng mariadb-server php -y</strong></p>
-<p>O parâmetro -y é usado para confirmar automaticamente as instalações sem solicitar confirmação manual.</p>
 <h1 id="configuracao-das-interfaces-de-rede-no-debian"><strong>Configuração das Interfaces de Rede no Debian</strong></h1>
 <p>A configuração das interfaces de rede no Debian é feita por meio do arquivo de configuração 
  /etc/network/interfaces. Neste arquivo, você pode definir as configurações de rede para cada interface de rede do sistema.</p>
 <h2 id="passo-1-acessar-o-arquivo-de-configuracao">Passo 1: Acessar o arquivo de configuração</h2>
 <p>Abra um terminal e acesse o arquivo de configuração /etc/network/interfaces usando um editor de texto, como o nano:</p>
-<p><strong>$ nano /etc/network/interfaces</strong></p>
+<pre><code>$ sudo nano /etc/network/interfaces
+</code></pre>
 <h2 id="passo-2-configurar-as-interfaces-de-rede">Passo 2: Configurar as interfaces de rede</h2>
 <p>Dentro do arquivo /etc/network/interfaces, você pode definir as configurações para cada interface de rede separadamente. Aqui está um exemplo de como configurar uma interface de rede usando DHCP:</p>
-<p>auto eth0
-iface eth0 inet dhcp</p>
+<pre><code>auto eth0
+iface eth0 inet dhcp
+</code></pre>
 <p>Nesse exemplo, a interface de rede eth0 está configurada para obter um endereço IP automaticamente por meio do DHCP.</p>
 <p>Se você deseja configurar um endereço IP estático para a interface de rede, pode usar o seguinte exemplo:</p>
-<p>auto eth0
+<pre><code>auto eth0
 iface eth0 inet static
     address 192.168.0.100
     netmask 255.255.255.0
-    gateway 192.168.0.1</p>
+    gateway 192.168.0.1
+</code></pre>
 <p>Nesse exemplo, a interface de rede eth0 está configurada com um endereço IP estático 192.168.0.100, uma máscara de rede 255.255.255.0 e um gateway padrão 192.168.0.1.</p>
 <p>Você também pode adicionar configurações adicionais, como servidores DNS:</p>
-<p>auto eth0
+<pre><code>auto eth0
 iface eth0 inet static
     address 192.168.0.100
     netmask 255.255.255.0
     gateway 192.168.0.1
     dns-nameservers 8.8.8.8 8.8.4.4
-Nesse exemplo, os servidores DNS do Google 8.8.8.8 e 8.8.4.4 são configurados para a interface de rede eth0.</p>
+</code></pre>
+<p>Nesse exemplo, os servidores DNS do Google 8.8.8.8 e 8.8.4.4 são configurados para a interface de rede eth0.</p>
 <h2 id="passo-3-salvar-e-fechar-o-arquivo">Passo 3: Salvar e fechar o arquivo</h2>
 <p>Depois de fazer as alterações necessárias no arquivo /etc/network/interfaces, salve o arquivo e feche o editor de texto.</p>
 <h2 id="passo-4-reiniciar-o-servico-de-rede">Passo 4: Reiniciar o serviço de rede</h2>
 <p>Para que as alterações tenham efeito, você precisa reiniciar o serviço de rede. Use o seguinte comando para reiniciar o serviço networking:</p>
-<p><strong>$ systemctl restart networking</strong></p></div>
+<pre><code>$ systemctl restart networking
+</code></pre></div>
             </div>
         </div>
 
         <footer class="col-md-12">
             <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+            <p>Documentação construída com <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
             var base_url = "..",
@@ -228,17 +227,17 @@ Nesse exemplo, os servidores DNS do Google 8.8.8.8 e 8.8.4.4 são configurados p
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="searchModalLabel">Buscar</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>A partir daqui você pode buscar pelo documento. Digite os termos de pesquisa abaixo.</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Buscando..." id="mkdocs-search-query" title="Digite o termo a ser buscado aqui">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results" data-no-results-text="Não foram encontrados resultados"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -248,33 +247,33 @@ Nesse exemplo, os servidores DNS do Google 8.8.8.8 e 8.8.4.4 são configurados p
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="keyboardModalLabel">Atalhos de teclado</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
             </div>
             <div class="modal-body">
               <table class="table">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
+                    <th style="width: 20%;">Teclas</th>
+                    <th>Ação</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>Abrir esta ajuda</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>Próxima página</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>Página anterior</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>Buscar</td>
                   </tr>
                 </tbody>
               </table>
