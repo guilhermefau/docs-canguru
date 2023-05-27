@@ -3,8 +3,13 @@ site_url: https://docs-canguru.oulu.ifrn.edu.br
 site_description: Documentação Canguru
 site_author: Canguru
 
-nav:
-
-
 theme:
+    custom_dir: docs/overrides
     name: mkdocs
+    nav_style: dark
+    locale: pt_BR
+    favicon: img/favicon.ico
+
+extra_css:
+    - assets/css/extra.css
+    - 'https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=IBM+Plex+Sans&display=swap'

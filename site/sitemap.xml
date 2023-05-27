@@ -6,7 +6,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs-canguru.oulu.ifrn.edu.br/comandos/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs-canguru.oulu.ifrn.edu.br/configurar_interfaces/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs-canguru.oulu.ifrn.edu.br/ssh/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs-canguru.oulu.ifrn.edu.br/verlogs/</loc>
          <lastmod>2023-05-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
