@@ -1,6 +1,8 @@
 # SAMBA4: INSTALAÇÃO NO ALPINE LINUX
 
-#**Instalação dos pacotes Necessarios:**
+Essa documentação foi baseada no seguinte [Roteiro](https://wiki.alpinelinux.org/wiki/Setting_up_a_samba-ad-dc)
+
+##**Instalação dos pacotes Necessarios:**
 
     $ apk add samba-dc krb5 
 
@@ -84,9 +86,44 @@ meu arquivo ficou assim:
 
 Pronto!
 
-#Iniciando a configuraçao do domino do Samba:
+##**Iniciando a configuraçao do domino do Samba:**
 
 comando:
 
     $ samba-tool domain provision --use-rfc2307 --interactive
 
+![Alt text](img/image.png)
+
+Pode seguir as opções padrões. na opção do forwarder IP você pode colocar o seu Servidor DNS ou outro de sua escolha, no meu caso utilizei o do Google (8.8.8.8).
+
+##**Configurando o arquivo /etc/resolv.conf**
+
+Aqui um exemplo de como o arquivo deve ficar:
+
+    search example.com
+    nameserver 10.1.1.10
+
+No meu caso ficou assim:
+
+    search rn.lab
+    nameserver 192.168.56.65
+
+##**Configurando o Kerberos**
+
+Precisamos criar um link do arquivo krb5.conf no diretório /etc/, que apontará para o arquivo krb5.conf localizado em /var/lib/samba/private/.
+
+comando:
+
+    $ ln -sf /var/lib/samba/private/krb5.conf /etc/krb5.conf
+
+##**Configurando o serviço Samba para iniciar**
+
+comando para iniciar o serviço do Samba ao ligar a maquina:
+
+    $ rc-update add samba
+
+comando para iniciar agora:
+
+    $ rc-service samba start
+
+Pronto o Samba está instalado e configurado.

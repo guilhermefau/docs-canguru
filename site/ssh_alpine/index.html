@@ -12,20 +12,20 @@
         <meta name="author" content="Canguru">
       
       
-        <link rel="canonical" href="https://docs-canguru.oulu.ifrn.edu.br/ssh/">
+        <link rel="canonical" href="https://docs-canguru.oulu.ifrn.edu.br/ssh_alpine/">
       
       
-        <link rel="prev" href="../servico_http/">
+        <link rel="prev" href="../ssh/">
       
       
-        <link rel="next" href="../ssh_alpine/">
+        <link rel="next" href="../ver_logs/">
       
       <link rel="icon" href="../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
-        <title>SSH - Docs-Canguru</title>
+        <title>SSH NO ALPINE LINUX - Docs-Canguru</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh" class="md-skip">
+        <a href="#ssh-no-alpine-linux" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SSH
+              SSH NO ALPINE LINUX
             
           </span>
         </div>
@@ -265,6 +265,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -277,24 +292,9 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        SSH
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ssh_alpine/" class="md-nav__link">
         SSH NO ALPINE LINUX
       </a>
+      
     </li>
   
 
@@ -347,49 +347,20 @@
                   
 
 
-<h1 id="ssh">SSH</h1>
-<h1 id="instalacao-do-ssh"><strong>Instalação do SSH</strong></h1>
-<pre><code>$ sudo apt update # atualiza o catálogo de pacotes
-
-$ sudo apt install ssh # instala o pacote do SSH
+<h1 id="ssh-no-alpine-linux">SSH NO ALPINE LINUX</h1>
+<p>Para instalar um servidor SSH (OpenSSH) no Alpine Linux, você pode seguir os seguintes passos:</p>
+<p>Abra um terminal ou acesse o console do seu sistema Alpine Linux.</p>
+<p>Atualize o índice de pacotes para garantir que você esteja usando a lista mais atualizada dos pacotes disponíveis. Para isso, execute o seguinte comando como usuário root ou usando o sudo:</p>
+<pre><code>$ sudo apk update
 </code></pre>
-<h1 id="arquivos-de-configuracao-e-chaves-ssh"><strong>Arquivos de Configuração e Chaves SSH</strong></h1>
-<h2 id="no-servidor-ssh"><strong>No servidor SSH:</strong></h2>
-<p>/etc/ssh/sshd_config: Este é o arquivo de configuração do servidor SSH. Ele contém várias opções de configuração, como portas, autenticação, permissões de acesso, entre outras. É necessário ter privilégios de superusuário para editar este arquivo.</p>
-<h2 id="no-cliente-ssh"><strong>No cliente SSH:</strong></h2>
-<p>~/.ssh/config: Este é o arquivo de configuração do cliente SSH, localizado no diretório home do usuário. Ele permite configurar opções específicas para conexões SSH, como aliases de host, identidades de chave, opções de autenticação, entre outras.</p>
-<h1 id="arquivo-sshconfig"><strong>Arquivo ~/.ssh/config</strong></h1>
-<pre><code>Host #NOME DE SUA ESCOLHA
-    HostName #ENDEREÇO_IP_HOST
-    User #NOME DO USUARIO
-    Port #PORTA DO SSH CASO TENHA CONFIGURADO UMA DIFERENTE DA PADRÃO
+<p>Em seguida, instale o pacote OpenSSH-server usando o comando apk:</p>
+<pre><code>$ sudo apk add openssh-server
 </code></pre>
-<h2 id="arquivos-de-chave-ssh"><strong>Arquivos de chave SSH:</strong></h2>
-<h4 id="id_rsa-e-id_rsapub"><strong>id_rsa e id_rsa.pub:</strong></h4>
-<p>Esses são os arquivos da chave privada e pública, respectivamente. A chave privada (id_rsa) é mantida no cliente e é usada para autenticar a conexão SSH. A chave pública (id_rsa.pub) é copiada para o servidor SSH e adicionada ao arquivo authorized_keys para permitir a autenticação com a chave correspondente.</p>
-<h4 id="authorized_keys"><strong>authorized_keys:</strong></h4>
-<p>Este arquivo está localizado no diretório ~/.ssh do usuário no servidor SSH. Ele contém as chaves públicas autorizadas para autenticação com o servidor. Cada chave pública autorizada é adicionada em uma nova linha neste arquivo.</p>
-<h4 id="known_hosts"><strong>known_hosts:</strong></h4>
-<p>Este arquivo é criado automaticamente pelo cliente SSH quando se conecta a um novo servidor SSH. Ele armazena as chaves públicas dos servidores aos quais você já se conectou, a fim de verificar a autenticidade desses servidores em conexões futuras.
-Esses arquivos e configurações são importantes para a configuração e autenticação segura de conexões SSH. Ao configurar o SSH, é essencial garantir que as permissões corretas sejam aplicadas aos arquivos de chave (por exemplo, id_rsa deve ter permissões restritas somente para o usuário) e que as configurações de segurança apropriadas sejam definidas nos arquivos de configuração (por exemplo, no sshd_config do servidor).</p>
-<h1 id="gerando-chaves-ssh"><strong>Gerando chaves SSH</strong></h1>
-<pre><code>$ ssh-keygen -t ed25519
+<p>O servidor SSH agora está instalado em seu sistema. Por padrão, o serviço SSH é habilitado automaticamente após a instalação. Para garantir que ele seja iniciado automaticamente ao iniciar o sistema, execute o seguinte comando:</p>
+<pre><code>$ sudo rc-update add sshd
 </code></pre>
-<h1 id="copiando-as-chaves"><strong>Copiando as chaves</strong></h1>
-<pre><code>$ sh-copy-id USUARIO@ENDEREÇO_IP
-</code></pre>
-<p>Copiando as chaves para o host você pode acessá-lo sem a necessidade de senhas(apenas na primeira vez será solicitado a senha, pois ele irá se conectar ao host e copiar as chaves públicas do ssh).</p>
-<h1 id="copiando-um-arquivo-local-para-um-servidor-remoto"><strong>Copiando um arquivo local para um servidor remoto:</strong></h1>
-<pre><code>$ scp /caminho/do/arquivo.txt usuario@servidor:/caminho/destino/
-</code></pre>
-<h1 id="copiando-um-arquivo-remoto-para-o-seu-computador-local"><strong>Copiando um arquivo remoto para o seu computador local:</strong></h1>
-<pre><code>$ scp usuario@servidor:/caminho/do/arquivo.txt /caminho/destino/
-</code></pre>
-<h1 id="copiando-um-diretorio-local-para-um-servidor-remoto-use-a-opcao-r-para-transferir-recursivamente"><strong>Copiando um diretório local para um servidor remoto (use a opção "-r" para transferir recursivamente):</strong></h1>
-<pre><code>$ scp -r /caminho/do/diretorio usuario@servidor:/caminho/destino/
-</code></pre>
-<h1 id="copiando-um-diretorio-remoto-para-o-seu-computador-local-uso-da-opcao-r"><strong>Copiando um diretório remoto para o seu computador local (uso da opção "-r"):</strong></h1>
-<pre><code>$ scp -r usuario@servidor:/caminho/do/diretorio /caminho/destino/
+<p>Agora, inicie o servidor SSH imediatamente com o seguinte comando:</p>
+<pre><code>$ sudo service sshd start
 </code></pre>
 
 
