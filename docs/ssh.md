@@ -1,4 +1,10 @@
 # SSH
+#**Instalação do SSH**
+    
+    $ sudo apt update # atualiza o catálogo de pacotes
+
+    $ sudo apt install ssh # instala o pacote do SSH
+
 #**Arquivos de Configuração e Chaves SSH**
 
 ##**No servidor SSH:**
@@ -8,6 +14,14 @@
 ##**No cliente SSH:**
 
 ~/.ssh/config: Este é o arquivo de configuração do cliente SSH, localizado no diretório home do usuário. Ele permite configurar opções específicas para conexões SSH, como aliases de host, identidades de chave, opções de autenticação, entre outras.
+
+#**Arquivo ~/.ssh/config**
+    
+    Host #NOME DE SUA ESCOLHA
+        HostName #ENDEREÇO_IP_HOST
+        User #NOME DO USUARIO
+        Port #PORTA DO SSH CASO TENHA CONFIGURADO UMA DIFERENTE DA PADRÃO
+
 
 ##**Arquivos de chave SSH:**
 
@@ -23,3 +37,30 @@ Este arquivo está localizado no diretório ~/.ssh do usuário no servidor SSH. 
 
 Este arquivo é criado automaticamente pelo cliente SSH quando se conecta a um novo servidor SSH. Ele armazena as chaves públicas dos servidores aos quais você já se conectou, a fim de verificar a autenticidade desses servidores em conexões futuras.
 Esses arquivos e configurações são importantes para a configuração e autenticação segura de conexões SSH. Ao configurar o SSH, é essencial garantir que as permissões corretas sejam aplicadas aos arquivos de chave (por exemplo, id_rsa deve ter permissões restritas somente para o usuário) e que as configurações de segurança apropriadas sejam definidas nos arquivos de configuração (por exemplo, no sshd_config do servidor).
+
+#**Gerando chaves SSH**
+
+    $ ssh-keygen -t ed25519
+
+#**Copiando as chaves**
+	
+    $ sh-copy-id USUARIO@ENDEREÇO_IP
+
+Copiando as chaves para o host você pode acessá-lo sem a necessidade de senhas(apenas na primeira vez será solicitado a senha, pois ele irá se conectar ao host e copiar as chaves públicas do ssh).
+
+#**Copiando um arquivo local para um servidor remoto:**
+
+    $ scp /caminho/do/arquivo.txt usuario@servidor:/caminho/destino/
+
+#**Copiando um arquivo remoto para o seu computador local:**
+
+	$ scp usuario@servidor:/caminho/do/arquivo.txt /caminho/destino/
+
+#**Copiando um diretório local para um servidor remoto (use a opção "-r" para transferir recursivamente):**
+
+    $ scp -r /caminho/do/diretorio usuario@servidor:/caminho/destino/
+
+#**Copiando um diretório remoto para o seu computador local (uso da opção "-r"):**
+
+    $ scp -r usuario@servidor:/caminho/do/diretorio /caminho/destino/
+
